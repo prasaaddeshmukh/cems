@@ -25,4 +25,11 @@ public StudentServiceImpl(StudentRepository studentRepository) {
 		
 	}
 
+
+@Override
+public Student saveStudent(Student student) {
+	
+	return studentRepository.save(student);
+}
+
 }
