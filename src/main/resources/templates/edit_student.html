@@ -12,7 +12,7 @@
   <!-- Brand -->
   <a class="navbar-brand" href="#">Student Management System</a>
 
-  <!-- Toggler/collapse Button -->
+  <!-- Toggler/collapsibe Button -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -31,9 +31,9 @@
 <div class = "container">
 <div class = "row">
 <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-   <h1 class = "text-center">  Create New Student </h1>
+   <h1 class = "text-center">  Update Student </h1>
      <div class = "card-body">
-     <form th:action="@{/students}" th:objects = "${students}" method="POST">
+     <form th:action="@{/students/{id} (id=${student.id})}" th:objects = "${students}" method="POST">
        <div class ="form-group">
        <label> Student First Name  </label>
        <input
