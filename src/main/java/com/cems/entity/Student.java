@@ -1,11 +1,7 @@
 package com.cems.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name="student")
@@ -20,7 +16,12 @@ public class Student {
 	private String lastName ;
 	@Column(name="email", nullable= false)
 	private String email ;
-		
+	@Column(name="password", nullable= false)
+    private String password;
+    @Column(name="flag", nullable= false)
+    private boolean enabled;
+    @Column(name="token_status", nullable= false)
+    private boolean tokenExpired;
 	public Student(String firstName, String lastName, String email) {
 		super();
 		
@@ -60,6 +61,20 @@ public class Student {
 		this.email = email;
 	}
 
+	public String getPassword() {
+		return password;
+	}
 
+	public void setPassword(String password) {
+		this.password = password;
+	}
+    @ManyToMany
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id"))
+    private Collection<Role> roles;
 	
 }
